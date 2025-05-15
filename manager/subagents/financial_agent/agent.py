@@ -2,7 +2,7 @@ from google.adk.agents import Agent
 from dotenv import load_dotenv
 load_dotenv()
 
-root_agent = Agent(
+financial_agent = Agent(
     name="financial_agent",
     model="gemini-2.0-flash",
     description="Financial agent",
