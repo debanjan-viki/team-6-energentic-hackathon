@@ -1,7 +1,6 @@
 import requests
 import uuid
 import time
-import json
 from google.adk.agents import Agent
 
 # Configuration
@@ -319,8 +318,8 @@ def confirm_order():
         print("❌ Something went wrong:", str(e))
 
 # Agent
-root_agent = Agent(
-    name="solar_panel_agent",
+order_agent = Agent(
+    name="order_agent",
     description="Solar Panel Search Agent",
     model="gemini-2.0-flash",
     instruction="""

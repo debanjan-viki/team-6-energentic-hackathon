@@ -1,7 +1,7 @@
 from google.adk.agents import Agent
 from dotenv import load_dotenv
 
-from enrollment import Enrollment
+from .enrollment import Enrollment
 load_dotenv()
 
 def handle_enrollment(energy_resource_id: str) -> dict:
@@ -34,5 +34,5 @@ onboarding_agent = Agent(
         After delegating the task, wait for the response from the agent and return it to the user and always come back to the manager agent after the task is done.
         If you are unable to delegate the task to any agent, and say "I am unable to delegate the task to any agent. Please try again later.".
     """,
-    sub_agents=[handle_enrollment],
+    tools=[handle_enrollment],
 )
