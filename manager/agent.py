@@ -1,9 +1,9 @@
 from google.adk.agents import Agent
 from dotenv import load_dotenv
 
-from .subagents.financial_agent.agent import financial_agent
 from .subagents.advisory_agent.agent import advisory_agent
 from .subagents.onboarding_agent.agent import onboarding_agent
+from .subagents.order_agent.agent import order_agent
 load_dotenv()
 
 root_agent = Agent(
@@ -19,10 +19,11 @@ root_agent = Agent(
         You are responsible for delegating tasks to the following agents:
         - onboarding_agent: Provides information and help users about DER enrollment and DER switching.
         - advisory_agent: Provides information from the RAG corpus in google cloud (about solar and renewables) or search google in real time.
+        - order_agent: Provides information and help users about orders and order status.
 
         If the task is related to solar and renewables, delegate it to the rag agent.
         After delegating the task, wait for the response from the agent and return it to the user and always come back to the manager agent after the task is done.
         If you are unable to delegate the task to any agent, and say "I am unable to delegate the task to any agent. Please try again later.".
     """,
-    sub_agents=[onboarding_agent, advisory_agent],
+    sub_agents=[onboarding_agent, advisory_agent, order_agent],
 )
